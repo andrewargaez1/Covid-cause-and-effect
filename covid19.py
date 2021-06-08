@@ -4,8 +4,6 @@ import numpy as np
 import glob
 import os
 
-from pandas.core.frame import DataFrame
-
 
 
 yourpath = '/home/aa1/COVID-19/csse_covid_19_data/csse_covid_19_daily_reports_us/'
@@ -27,6 +25,11 @@ for k,v in dict.items():
 
 
 df = pd.DataFrame()
+for k,v in sorted(twenty.items()):
+    df['States']= v['Province_State']
+    df['Lat']= v['Lat']
+    df['Long']= v['Long_']
+    break
 
 for k,v in sorted(twenty.items()):
     df[k + ' confirmed'] = v['Confirmed']
@@ -35,3 +38,5 @@ for k,v in sorted(twenty.items()):
 for k,v in sorted(twentyone.items()):
     df[k + ' confirmed'] = v['Confirmed']
     df[k + ' deaths'] = v['Deaths']
+
+print(df.head())
